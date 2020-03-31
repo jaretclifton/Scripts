@@ -35,7 +35,7 @@ if [ $plexPrimaryStatus -eq 1 ]
                 if [ "$logData" = "Secondary Restarted" ]
                         then
                                 echo `date`
-                                echo "[PLEX FAILOVER OK] Plex is now available on the primary node once again."
+                                echo "[PLEX FAILOVER OK] Plex is now available on the primary node once again. Secondary node Plex service stopped."
                                 curl -X POST -H 'Content-type: application/json' --data '{"text":"[PLEX FAILOVER OK] Plex Server Primary OK!"}' https://hooks.slack.com/services/[INSERT TOKEN HERE]
                                 `cat /dev/null` > $logFile
                                         if [ "$plexRunning" = "active" ]
