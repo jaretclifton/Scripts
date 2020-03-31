@@ -2,10 +2,11 @@
 
 logFile="/opt/plexStatusCheck.log"
 logData=$(cat "$logFile")
-echo $logData
+plexToken="[INSERT PLEX TOKEN HERE]"
+plexRunning=`systemctl show -p SubState --value plexmediaserver`
 
-#Check the status of the primary Plex server by looking for "plex-logo" in the output of the curl command
-plexStatus=`curl https://[INSERT HOST HERE]:32400/web/index.html -s -k | grep plex-logo | wc -l`
+#Check the status of the primary Plex server by looking for "<MediaContainer" in the output of the curl command
+plexStatus=`curl https://ct-plex.emeralddesign.com:32400/status/sessions?X-Plex-Token=$plexToken -s -k | grep "<MediaContainer" | wc -l`
 
 #Restart the local Plex server to pickup database changes sync'd from the primary if the curl fails to return a count of 1
 if [ $plexStatus -eq 0 ]
@@ -37,6 +38,10 @@ if [ $plexStatus -eq 1 ]
                                 echo "[PLEX FAILOVER OK] Plex is now available on the primary node once again."
                                 curl -X POST -H 'Content-type: application/json' --data '{"text":"[PLEX FAILOVER OK] Plex Server Primary OK!"}' https://hooks.slack.com/services/[INSERT TOKEN HERE]
                                 `cat /dev/null` > $logFile
+                                        if [ "$plexRunning" = "active" ]
+                                                then
+                                                        `service plexmediaserver stop > /dev/null`
+                                        fi
                 fi
 fi
 
@@ -47,5 +52,9 @@ if [ $plexStatus -eq 1 ]
                                 echo `date` 
                                 echo "[PLEX OK] Plex up and responding on the primary. No action to take."
                         `cat /dev/null` > $logFile
+                                        if [ "$plexRunning" = "active" ]
+                                                then
+                                                        `service plexmediaserver stop > /dev/null`
+                                        fi
                 fi
 fi
