@@ -6,10 +6,10 @@ plexToken="[INSERT PLEX TOKEN HERE]"
 plexRunning=`systemctl show -p SubState --value plexmediaserver`
 
 #Check the status of the primary Plex server by looking for "<MediaContainer" in the output of the curl command
-plexStatus=`curl https://ct-plex.emeralddesign.com:32400/status/sessions?X-Plex-Token=$plexToken -s -k | grep "<MediaContainer" | wc -l`
+plexPrimaryStatus=`curl https://ct-plex.emeralddesign.com:32400/status/sessions?X-Plex-Token=$plexToken -s -k | grep "<MediaContainer" | wc -l`
 
 #Restart the local Plex server to pickup database changes sync'd from the primary if the curl fails to return a count of 1
-if [ $plexStatus -eq 0 ]
+if [ $plexPrimaryStatus -eq 0 ]
         then
                 if [ "$logData" =  "Secondary Restarted" ]
                         then
@@ -18,7 +18,7 @@ if [ $plexStatus -eq 0 ]
                 fi
 fi
 
-if [ $plexStatus -eq 0 ]
+if [ $plexPrimaryStatus -eq 0 ]
         then
                 if [ "$logData" = "" ]
                         then
@@ -30,7 +30,7 @@ if [ $plexStatus -eq 0 ]
                 fi
 fi
 
-if [ $plexStatus -eq 1 ]
+if [ $plexPrimaryStatus -eq 1 ]
         then
                 if [ "$logData" = "Secondary Restarted" ]
                         then
@@ -45,7 +45,7 @@ if [ $plexStatus -eq 1 ]
                 fi
 fi
 
-if [ $plexStatus -eq 1 ]
+if [ $plexPrimaryStatus -eq 1 ]
         then
                 if [ "$logData" = "" ]
                         then
