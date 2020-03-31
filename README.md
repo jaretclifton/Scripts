@@ -2,7 +2,7 @@
 A random collection of scripts to help admin things mostly related to Plex.
 
 
-## Primary/Secondary HA
+### Primary/Secondary HA
 Scripts to help perform failover operations between a primary and secondary Plex server.
 
 
@@ -14,7 +14,7 @@ Scripts to help perform failover operations between a primary and secondary Plex
   - Script to look for all transcoded items in the Sync+ folder that are older than 1 day and delete them.
 
 
-## Torrent File Management
+### Torrent File Management
 Scripts to aid in handling torrent downloads after successful download completion.
 
 - removeExtractedFiles.ps1
