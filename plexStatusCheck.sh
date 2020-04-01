@@ -38,7 +38,7 @@ if [ $plexPrimaryStatus -eq 1 ]
                                 echo "[PLEX FAILOVER OK] Plex is now available on the primary node once again. Secondary node Plex service stopped."
                                 curl -X POST -H 'Content-type: application/json' --data '{"text":"[PLEX FAILOVER OK] Plex Server Primary OK!"}' https://hooks.slack.com/services/[INSERT TOKEN HERE]
                                 `cat /dev/null` > $logFile
-                                        if [ "$plexRunning" = "active" ]
+                                        if [ "$plexRunning" = "running" ]
                                                 then
                                                         `service plexmediaserver stop > /dev/null`
                                         fi
@@ -52,7 +52,7 @@ if [ $plexPrimaryStatus -eq 1 ]
                                 echo `date` 
                                 echo "[PLEX OK] Plex up and responding on the primary. No action to take."
                         `cat /dev/null` > $logFile
-                                        if [ "$plexRunning" = "active" ]
+                                        if [ "$plexRunning" = "running" ]
                                                 then
                                                         `service plexmediaserver stop > /dev/null`
                                         fi
