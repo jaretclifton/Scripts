@@ -11,7 +11,7 @@ Scripts to help perform failover operations between a primary and secondary Plex
 - plexStatusCheck.sh
   - Bash script to monitor the primary node from the secondary and take action if the primary fails to respond correctly.
 - deleteSyncedItems.sh
-  - Bash script to look for all transcoded items in the Sync+ folder that are older than 1 day and delete them.
+  - Bash script to look for all transcoded items in the Sync+ folder that are older than 2 days and delete them.
 
 
 ### Torrent File Management
