@@ -1,2 +1,2 @@
 # Copy the entire contents of the Plex directory (only changed items.. and delete any unused items on the remote host) to the secondary Plex server every minute.
-*/1 * * * * sshpass -p "[INSERT PASSWORD HERE]" rsync -uav --delete /var/lib/plexmediaserver/* [INSERT REMOTE HOST HERE]:/var/lib/plexmediaserver
+*/1 * * * * sshpass -p "[INSERT PASSWORD HERE]" rsync -uav --delete --exclude='Library/Application Support/Plex Media Server/Cache/Transcode/Sync+' /var/lib/plexmediaserver/* [INSERT REMOTE HOST HERE]:/var/lib/plexmediaserver
