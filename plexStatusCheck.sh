@@ -24,7 +24,7 @@ if [ $plexPrimaryStatus -eq 0 ]
                         then
                                 echo `date` 
                                 echo "[PLEX CRITICAL] Plex is down on the primary instance. Restarting Plex on the secondary to pickup database changes."
-                                `service plexmediaserver restart`
+                                systemctl restart plexmediaserver.service
                                 echo "Secondary Restarted" > $logFile
                                 curl -X POST -H 'Content-type: application/json' --data '{"text":"[PLEX FAILOVER] Plex Server Failover Event!"}' https://hooks.slack.com/services/[INSERT TOKEN HERE]
                 fi
@@ -40,7 +40,8 @@ if [ $plexPrimaryStatus -eq 1 ]
                                 `cat /dev/null` > $logFile
                                         if [ "$plexRunning" = "running" ]
                                                 then
-                                                        `service plexmediaserver stop > /dev/null`
+                                                        systemctl stop plexmediaserver.service
+                                                        echo "Stopped local Plex instance."
                                         fi
                 fi
 fi
@@ -54,7 +55,8 @@ if [ $plexPrimaryStatus -eq 1 ]
                         `cat /dev/null` > $logFile
                                         if [ "$plexRunning" = "running" ]
                                                 then
-                                                        `service plexmediaserver stop > /dev/null`
+                                                        systemctl stop plexmediaserver.service
+                                                        echo "Stopped local Plex instance."
                                         fi
                 fi
 fi
