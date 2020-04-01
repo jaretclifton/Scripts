@@ -7,7 +7,7 @@ Scripts to help perform failover operations between a primary and secondary Plex
 
 
 - plexSyncChanges.sh
-  - Use rsync's "update" functionality to replicate changes from the primary Plex server to the secondary including deletions.
+  - Bash script to use rsync's "update" functionality to replicate changes from the primary Plex server to the secondary including deletions.
 - plexStatusCheck.sh
   - Bash script to monitor the primary node from the secondary and take action if the primary fails to respond correctly.
 - deleteSyncedItems.sh
