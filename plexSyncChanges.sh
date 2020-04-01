@@ -12,6 +12,6 @@ fi
 
 if [ $plexPrimaryStatus -eq 1 ]
         then
-                echo `date` "[PLEX OK] Plex is up and running on the primary node. Syncing changes to the secondary."
+                echo `date` "[PLEX OK] Plex is up and responding on the primary node. Syncing changes to the secondary."
                 sshpass -p "[INSERT SSH PASSWORD HERE]" rsync -uav --delete --exclude='Library/Application Support/Plex Media Server/Cache/Transcode/Sync+' /var/lib/plexmediaserver/* [INSERT SECONDARY PLEX HOST HERE]:/var/lib/plexmediaserver
                 fi
