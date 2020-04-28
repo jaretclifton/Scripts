@@ -13,9 +13,9 @@ fi
 
 if [ $plexPrimaryStatus -eq 1 ]
         then
-                if [ $rsyncStatus -gt 3 ]
+                if [ $rsyncStatus -gt 2 ]
                         then
-                                echo `date` "[RSYNC ERROR] Multiple {$rsyncStatus} concurrent rsync jobs have been discovered. Aborting current transfer."
+                                echo `date` "[RSYNC ERROR] Multiple ($rsyncStatus) concurrent rsync jobs have been discovered. Aborting current transfer."
                         fi
                 if [ $rsyncStatus -eq 0 ]
                         then
