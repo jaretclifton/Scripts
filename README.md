@@ -2,7 +2,7 @@
 A random collection of scripts to help admin things mostly related to Plex.
 
 
-### Primary/Secondary HA
+### Plex
 Scripts to help perform failover operations between a primary and secondary Plex server.
 
 
@@ -14,15 +14,15 @@ Scripts to help perform failover operations between a primary and secondary Plex
   - Bash script to look for all transcoded items in the Sync+ folder that are older than 2 days and delete them.
 
 
-### Torrent File Management
+### PowerShell
 Scripts to aid in handling torrent downloads after successful download completion.
 
 - removeExtractedFiles.ps1
   - PowerShell script to look for items that have been extracted from torrent downloads that are 8 hours old or older and delete them. This still leaves the torrent and it's files in place for seeding.
 
 
-### Ombi Request Tool
-Scripts related to managing actions from Ombi.
+### Ombi
+Scripts related to managing actions from the Ombi media request tool.
 
 - ombiDBBackup.sh
   - Bash script to automate backup jobs of the Ombi database since this functionality is not included in the application.
