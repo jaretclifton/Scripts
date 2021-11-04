@@ -28,3 +28,5 @@ Scripts related to managing actions from the Ombi media request tool.
   - Bash script to automate backup jobs of the Ombi database since this functionality is not included in the application.
 - ombiBackupCleanup.sh
   - Bash script to delete old Ombi DB backups.
+- autoOmbiUpgrade.sh
+-   Bash script to fetch the latest pre-release version of Ombi, backup the current instance and then install the latest downloaded version.
